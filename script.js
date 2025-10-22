@@ -8,37 +8,42 @@ let orders = JSON.parse(localStorage.getItem('orders')) || [];
 
 // Initialize demo data
 function initializeDemoData() {
-    // Demo users
-    // Luôn khởi tạo lại users để đảm bảo có dữ liệu
-    users = [{
-            id: 1,
-            email: 'customer@demo.com',
-            password: '123456',
-            fullname: 'Nguyễn Văn A',
-            phone: '0123456789',
-            address: '123 Đường ABC, Quận 1, TP.HCM',
-            birthday: '1990-01-01',
-            gender: 'male',
-            role: 'customer',
-            createdAt: new Date().toISOString()
-        },
-        {
-            id: 2,
-            email: 'admin@demo.com',
-            password: 'admin123',
-            fullname: 'Admin TechStore',
-            phone: '0987654321',
-            address: '456 Đường XYZ, Quận 2, TP.HCM',
-            birthday: '1985-05-15',
-            gender: 'male',
-            role: 'admin',
-            createdAt: new Date().toISOString()
-        }
-    ];
-    localStorage.setItem('users', JSON.stringify(users));
+    // Chỉ seed dữ liệu demo khi chưa có dữ liệu trong localStorage
+    const storedUsers = JSON.parse(localStorage.getItem('users') || '[]');
+    if (!Array.isArray(storedUsers) || storedUsers.length === 0) {
+        users = [{
+                id: 1,
+                email: 'customer@demo.com',
+                password: '123456',
+                fullname: 'Nguyễn Văn A',
+                phone: '0123456789',
+                address: '123 Đường ABC, Quận 1, TP.HCM',
+                birthday: '1990-01-01',
+                gender: 'male',
+                role: 'customer',
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 2,
+                email: 'admin@demo.com',
+                password: 'admin123',
+                fullname: 'Admin TechStore',
+                phone: '0987654321',
+                address: '456 Đường XYZ, Quận 2, TP.HCM',
+                birthday: '1985-05-15',
+                gender: 'male',
+                role: 'admin',
+                createdAt: new Date().toISOString()
+            }
+        ];
+        localStorage.setItem('users', JSON.stringify(users));
+    } else {
+        users = storedUsers;
+    }
 
-    // Demo orders
-    if (orders.length === 0) {
+    // Demo orders: chỉ khởi tạo khi chưa có
+    const storedOrders = JSON.parse(localStorage.getItem('orders') || '[]');
+    if (!Array.isArray(storedOrders) || storedOrders.length === 0) {
         orders = [{
                 id: 1,
                 customerId: 1,
@@ -70,6 +75,8 @@ function initializeDemoData() {
             }
         ];
         localStorage.setItem('orders', JSON.stringify(orders));
+    } else {
+        orders = storedOrders;
     }
 }
 
@@ -748,19 +755,38 @@ function logout() {
 
 // Update navigation based on user status
 function updateNavigation() {
+    const nav = document.querySelector('.nav');
     const loginLink = document.getElementById('login-link');
     const registerLink = document.getElementById('register-link');
-    const profileLink = document.getElementById('profile-link');
-    const adminLink = document.getElementById('admin-link');
+    let profileLink = document.getElementById('profile-link');
+    let adminLink = document.getElementById('admin-link');
+    let logoutLink = document.getElementById('logout-link');
     const adminIcon = document.getElementById('admin-icon');
 
     if (currentUser) {
         if (loginLink) loginLink.style.display = 'none';
         if (registerLink) registerLink.style.display = 'none';
+
+        // Tạo link Hồ sơ nếu chưa có
+        if (!profileLink && nav) {
+            profileLink = document.createElement('a');
+            profileLink.id = 'profile-link';
+            profileLink.href = 'profile.html';
+            profileLink.textContent = 'Hồ sơ';
+            nav.appendChild(profileLink);
+        }
         if (profileLink) profileLink.style.display = 'block';
         
         // Show admin link and icon if user is admin
         if (currentUser.role === 'admin') {
+            // Tạo link Quản trị nếu chưa có
+            if (!adminLink && nav) {
+                adminLink = document.createElement('a');
+                adminLink.id = 'admin-link';
+                adminLink.href = 'admin.html';
+                adminLink.textContent = 'Quản trị';
+                nav.appendChild(adminLink);
+            }
             if (adminLink) adminLink.style.display = 'block';
             
             // Add admin icon if it doesn't exist
@@ -785,12 +811,29 @@ function updateNavigation() {
             if (adminLink) adminLink.style.display = 'none';
             if (adminIcon) adminIcon.style.display = 'none';
         }
+
+        // Tạo nút Đăng xuất nếu chưa có
+        if (!logoutLink && nav) {
+            logoutLink = document.createElement('a');
+            logoutLink.id = 'logout-link';
+            logoutLink.href = '#';
+            logoutLink.textContent = 'Đăng xuất';
+            nav.appendChild(logoutLink);
+        }
+        if (logoutLink) {
+            logoutLink.style.display = 'block';
+            logoutLink.onclick = function(e) {
+                e.preventDefault();
+                logout();
+            };
+        }
     } else {
         if (loginLink) loginLink.style.display = 'block';
         if (registerLink) registerLink.style.display = 'block';
         if (profileLink) profileLink.style.display = 'none';
         if (adminLink) adminLink.style.display = 'none';
         if (adminIcon) adminIcon.style.display = 'none';
+        if (logoutLink) logoutLink.style.display = 'none';
     }
 }
 
