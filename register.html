@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - TechStore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-laptop"></i> TechStore
+            </a>
+            <nav class="nav">
+                <a href="index.html">Trang chủ</a>
+                <a href="products.html">Sản phẩm</a>
+                <a href="contact.html">Liên hệ</a>
+                <a href="login.html" id="login-link">Đăng nhập</a>
+                <a href="register.html" id="register-link">Đăng ký</a>
+                <a href="profile.html" id="profile-link" style="display: none;">Hồ sơ</a>
+                <a href="admin.html" id="admin-link" style="display: none;">Quản trị</a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+        <!-- Main Content -->
+    <main class="main-content" id="main-content">
+            <!-- Register Form -->
+            <div class="form-container">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">
+                    <i class="fas fa-user-plus"></i> Đăng ký tài khoản
+                </h2>
+
+                <!-- Messages -->
+                <div id="message-container"></div>
+
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="fullname">
+                            <i class="fas fa-user"></i> Họ và tên:
+                        </label>
+                        <input type="text" id="fullname" required placeholder="Nhập họ và tên đầy đủ">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i> Email:
+                        </label>
+                        <input type="email" id="email" required placeholder="Nhập email của bạn">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">
+                            <i class="fas fa-phone"></i> Số điện thoại:
+                        </label>
+                        <input type="tel" id="phone" required placeholder="Nhập số điện thoại">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">
+                            <i class="fas fa-map-marker-alt"></i> Địa chỉ:
+                        </label>
+                        <textarea id="address" rows="3" required placeholder="Nhập địa chỉ của bạn"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i> Mật khẩu:
+                        </label>
+                        <input type="password" id="password" required placeholder="Nhập mật khẩu (ít nhất 6 ký tự)">
+                        <div id="password-strength" style="margin-top: 0.5rem; font-size: 0.9rem;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">
+                            <i class="fas fa-lock"></i> Xác nhận mật khẩu:
+                        </label>
+                        <input type="password" id="confirm-password" required placeholder="Nhập lại mật khẩu">
+                        <div id="password-match" style="margin-top: 0.5rem; font-size: 0.9rem;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthday">
+                            <i class="fas fa-calendar"></i> Ngày sinh:
+                        </label>
+                        <input type="date" id="birthday" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">
+                            <i class="fas fa-venus-mars"></i> Giới tính:
+                        </label>
+                        <select id="gender" required>
+                            <option value="">Chọn giới tính</option>
+                            <option value="male">Nam</option>
+                            <option value="female">Nữ</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms" style="margin-bottom: 0;">
+                            Tôi đồng ý với 
+                            <a href="#" style="color: #74b9ff;">Điều khoản sử dụng</a> 
+                            và 
+                            <a href="#" style="color: #74b9ff;">Chính sách bảo mật</a>
+                        </label>
+                    </div>
+
+                    <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox" id="newsletter">
+                        <label for="newsletter" style="margin-bottom: 0;">
+                            Nhận thông tin khuyến mãi qua email
+                        </label>
+                    </div>
+
+                    <button type="submit" class="form-btn">
+                        <i class="fas fa-user-plus"></i> Đăng ký
+                    </button>
+                </form>
+
+                <!-- Additional Links -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <p style="color: #666;">
+                        Đã có tài khoản?
+                        <a href="login.html" style="color: #74b9ff; text-decoration: none; font-weight: 600;">
+                            Đăng nhập ngay
+                        </a>
+                    </p>
+                </div>
+
+                <!-- Benefits -->
+                <div style="margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 10px;">
+                    <h3 style="text-align: center; color: #333; margin-bottom: 1.5rem;">
+                        <i class="fas fa-gift"></i> Lợi ích khi đăng ký
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div style="text-align: center; padding: 1rem;">
+                            <i class="fas fa-percentage" style="font-size: 2rem; color: #74b9ff; margin-bottom: 0.5rem;"></i>
+                            <h4 style="color: #333; margin-bottom: 0.5rem;">Giảm giá đặc biệt</h4>
+                            <p style="font-size: 0.9rem; color: #666;">Nhận mã giảm giá 10% cho đơn hàng đầu tiên</p>
+                        </div>
+                        <div style="text-align: center; padding: 1rem;">
+                            <i class="fas fa-shipping-fast" style="font-size: 2rem; color: #00b894; margin-bottom: 0.5rem;"></i>
+                            <h4 style="color: #333; margin-bottom: 0.5rem;">Giao hàng miễn phí</h4>
+                            <p style="font-size: 0.9rem; color: #666;">Miễn phí giao hàng cho đơn từ 500.000 VNĐ</p>
+                        </div>
+                        <div style="text-align: center; padding: 1rem;">
+                            <i class="fas fa-star" style="font-size: 2rem; color: #fdcb6e; margin-bottom: 0.5rem;"></i>
+                            <h4 style="color: #333; margin-bottom: 0.5rem;">Tích điểm thưởng</h4>
+                            <p style="font-size: 0.9rem; color: #666;">Tích điểm cho mỗi giao dịch và đổi quà</p>
+                        </div>
+                        <div style="text-align: center; padding: 1rem;">
+                            <i class="fas fa-headset" style="font-size: 2rem; color: #e17055; margin-bottom: 0.5rem;"></i>
+                            <h4 style="color: #333; margin-bottom: 0.5rem;">Hỗ trợ 24/7</h4>
+                            <p style="font-size: 0.9rem; color: #666;">Đội ngũ hỗ trợ chuyên nghiệp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Về chúng tôi</h3>
+                        <p>TechStore là cửa hàng công nghệ hàng đầu Việt Nam, chuyên cung cấp các sản phẩm điện tử chất lượng cao với giá cả hợp lý.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Liên kết nhanh</h3>
+                        <ul style="list-style: none;">
+                            <li><a href="index.html">Trang chủ</a></li>
+                            <li><a href="contact.html">Liên hệ</a></li>
+                            <li><a href="login.html">Đăng nhập</a></li>
+                            <li><a href="register.html">Đăng ký</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Liên hệ</h3>
+                        <p><i class="fas fa-phone"></i> 1900 1234</p>
+                        <p><i class="fas fa-envelope"></i> info@techstore.vn</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận 1, TP.HCM</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 TechStore. Tất cả quyền được bảo lưu.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

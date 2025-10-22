@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - TechStore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-laptop"></i> TechStore
+            </a>
+            <nav class="nav">
+                <a href="index.html">Trang chủ</a>
+                <a href="products.html">Sản phẩm</a>
+                <a href="contact.html">Liên hệ</a>
+                <a href="login.html" id="login-link">Đăng nhập</a>
+                <a href="register.html" id="register-link">Đăng ký</a>
+                <a href="profile.html" id="profile-link" style="display: none;">Hồ sơ</a>
+                <a href="admin.html" id="admin-link" style="display: none;">Quản trị</a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+        <!-- Main Content -->
+    <main class="main-content" id="main-content">
+            <!-- Login Form -->
+            <div class="form-container">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">
+                    <i class="fas fa-sign-in-alt"></i> Đăng nhập
+                </h2>
+
+                <!-- Messages -->
+                <div id="message-container"></div>
+
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i> Email:
+                        </label>
+                        <input type="email" id="email" required placeholder="Nhập email của bạn">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i> Mật khẩu:
+                        </label>
+                        <input type="password" id="password" required placeholder="Nhập mật khẩu">
+                    </div>
+
+                    <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me" style="margin-bottom: 0;">Ghi nhớ đăng nhập</label>
+                    </div>
+
+                    <button type="submit" class="form-btn">
+                        <i class="fas fa-sign-in-alt"></i> Đăng nhập
+                    </button>
+                </form>
+
+                <!-- Additional Links -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <p style="color: #666; margin-bottom: 1rem;">
+                        Chưa có tài khoản?
+                        <a href="register.html" style="color: #74b9ff; text-decoration: none; font-weight: 600;">
+                            Đăng ký ngay
+                        </a>
+                    </p>
+                    <a href="#" id="forgot-password" style="color: #74b9ff; text-decoration: none;">
+                        <i class="fas fa-question-circle"></i> Quên mật khẩu?
+                    </a>
+                </div>
+
+                <!-- Demo Accounts -->
+                <div style="margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 10px;">
+                    <h3 style="text-align: center; color: #333; margin-bottom: 1rem;">
+                        <i class="fas fa-info-circle"></i> Tài khoản demo
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div style="text-align: center; padding: 1rem; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <h4 style="color: #74b9ff; margin-bottom: 0.5rem;">Khách hàng</h4>
+                            <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">customer@demo.com</p>
+                            <p style="font-size: 0.9rem; color: #666;">password: 123456</p>
+                            <button onclick="fillDemoAccount('customer@demo.com', '123456')" style="margin-top: 0.5rem; padding: 0.5rem 1rem; background: #74b9ff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
+                                Sử dụng
+                            </button>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <h4 style="color: #e17055; margin-bottom: 0.5rem;">Quản trị viên</h4>
+                            <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">admin@demo.com</p>
+                            <p style="font-size: 0.9rem; color: #666;">password: admin123</p>
+                            <button onclick="fillDemoAccount('admin@demo.com', 'admin123')" style="margin-top: 0.5rem; padding: 0.5rem 1rem; background: #e17055; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
+                                Sử dụng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Về chúng tôi</h3>
+                        <p>TechStore là cửa hàng công nghệ hàng đầu Việt Nam, chuyên cung cấp các sản phẩm điện tử chất lượng cao với giá cả hợp lý.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Liên kết nhanh</h3>
+                        <ul style="list-style: none;">
+                            <li><a href="index.html">Trang chủ</a></li>
+                            <li><a href="contact.html">Liên hệ</a></li>
+                            <li><a href="login.html">Đăng nhập</a></li>
+                            <li><a href="register.html">Đăng ký</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Liên hệ</h3>
+                        <p><i class="fas fa-phone"></i> 1900 1234</p>
+                        <p><i class="fas fa-envelope"></i> info@techstore.vn</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận 1, TP.HCM</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 TechStore. Tất cả quyền được bảo lưu.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function fillDemoAccount(email, password) {
+            document.getElementById('email').value = email;
+            document.getElementById('password').value = password;
+        }
+    </script>
+</body>
+
+</html>

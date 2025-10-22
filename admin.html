@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản trị - TechStore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .back-to-home {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .back-to-home:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-laptop"></i> TechStore Admin
+            </a>
+            <nav class="nav">
+                <a href="index.html">Trang chủ</a>
+                <a href="products.html">Sản phẩm</a>
+                <a href="contact.html">Liên hệ</a>
+                <a href="login.html" id="login-link">Đăng nhập</a>
+                <a href="register.html" id="register-link">Đăng ký</a>
+                <a href="profile.html" id="profile-link" style="display: none;">Hồ sơ</a>
+                <a href="admin.html" id="admin-link" style="display: none;">Quản trị</a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+                <a href="index.html" class="back-to-home">
+                    <i class="fas fa-home"></i> Quay về trang chính
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Admin Header -->
+        <div class="hero admin-header">
+            <h1><i class="fas fa-cogs"></i> Trang quản trị</h1>
+            <p>Quản lý hệ thống và dữ liệu của cửa hàng</p>
+        </div>
+
+            <!-- Messages -->
+            <div id="message-container"></div>
+
+            <!-- Admin Tabs -->
+            <div class="admin-container">
+                <div class="admin-tabs">
+                    <button class="admin-tab active" data-tab="dashboard">
+                        <i class="fas fa-tachometer-alt"></i> Tổng quan
+                    </button>
+                    <button class="admin-tab" data-tab="products">
+                        <i class="fas fa-box"></i> Sản phẩm
+                    </button>
+                    <button class="admin-tab" data-tab="orders">
+                        <i class="fas fa-shopping-cart"></i> Đơn hàng
+                    </button>
+                    <button class="admin-tab" data-tab="customers">
+                        <i class="fas fa-users"></i> Khách hàng
+                    </button>
+                    <button class="admin-tab" data-tab="categories">
+                        <i class="fas fa-tags"></i> Danh mục
+                    </button>
+                </div>
+
+                <!-- Dashboard Tab -->
+                <div class="admin-content active" id="dashboard">
+                    <h2 style="color: #333; margin-bottom: 2rem;">
+                        <i class="fas fa-chart-line"></i> Thống kê tổng quan
+                    </h2>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="total-products">0</div>
+                            <div class="stat-label">Tổng sản phẩm</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="total-orders">0</div>
+                            <div class="stat-label">Tổng đơn hàng</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="total-customers">0</div>
+                            <div class="stat-label">Tổng khách hàng</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="total-revenue">0 VNĐ</div>
+                            <div class="stat-label">Tổng doanh thu</div>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                        <div class="cart-container">
+                            <h3 style="color: #333; margin-bottom: 1rem;">
+                                <i class="fas fa-box"></i> Sản phẩm bán chạy
+                            </h3>
+                            <div id="top-products">
+                                <!-- Top products will be loaded here -->
+                            </div>
+                        </div>
+
+                        <div class="cart-container">
+                            <h3 style="color: #333; margin-bottom: 1rem;">
+                                <i class="fas fa-chart-pie"></i> Thống kê theo danh mục
+                            </h3>
+                            <div id="category-stats">
+                                <!-- Category statistics will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Tab -->
+                <div class="admin-content" id="products">
+                    <h2 style="color: #333; margin-bottom: 2rem;">
+                        <i class="fas fa-box"></i> Quản lý sản phẩm
+                    </h2>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <button id="add-product-btn" class="form-btn">
+                            <i class="fas fa-plus"></i> Thêm sản phẩm mới
+                        </button>
+                        <div style="display: flex; gap: 1rem;">
+                            <input type="text" id="product-search" placeholder="Tìm kiếm sản phẩm..." style="padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 10px;">
+                            <select id="product-category-filter" style="padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 10px;">
+                                <option value="">Tất cả danh mục</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="cart-container">
+                        <div id="products-list">
+                            <!-- Products list will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders Tab -->
+                <div class="admin-content" id="orders">
+                    <h2 style="color: #333; margin-bottom: 2rem;">
+                        <i class="fas fa-shopping-cart"></i> Quản lý đơn hàng
+                    </h2>
+
+                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                        <select id="order-status-filter" style="padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 10px;">
+                            <option value="">Tất cả trạng thái</option>
+                            <option value="pending">Chờ xử lý</option>
+                            <option value="processing">Đang xử lý</option>
+                            <option value="shipped">Đã giao hàng</option>
+                            <option value="delivered">Đã nhận hàng</option>
+                            <option value="cancelled">Đã hủy</option>
+                        </select>
+                        <input type="date" id="order-date-filter" style="padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 10px;">
+                    </div>
+
+                    <div class="cart-container">
+                        <div id="orders-list">
+                            <!-- Orders list will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customers Tab -->
+                <div class="admin-content" id="customers">
+                    <h2 style="color: #333; margin-bottom: 2rem;">
+                        <i class="fas fa-users"></i> Quản lý khách hàng
+                    </h2>
+
+                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                        <input type="text" id="customer-search" placeholder="Tìm kiếm khách hàng..." style="padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 10px;">
+                        <select id="customer-sort" style="padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 10px;">
+                            <option value="newest">Mới nhất</option>
+                            <option value="oldest">Cũ nhất</option>
+                            <option value="name">Tên A-Z</option>
+                            <option value="orders">Số đơn hàng</option>
+                        </select>
+                    </div>
+
+                    <div class="cart-container">
+                        <div id="customers-list">
+                            <!-- Customers list will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categories Tab -->
+                <div class="admin-content" id="categories">
+                    <h2 style="color: #333; margin-bottom: 2rem;">
+                        <i class="fas fa-tags"></i> Quản lý danh mục
+                    </h2>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <button id="add-category-btn" class="form-btn">
+                            <i class="fas fa-plus"></i> Thêm danh mục mới
+                        </button>
+                    </div>
+
+                    <div class="cart-container">
+                        <div id="categories-list">
+                            <!-- Categories list will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add/Edit Product Modal -->
+            <div class="form-container" id="product-modal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; max-width: 600px; width: 90%;">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">
+                    <i class="fas fa-box"></i> <span id="product-modal-title">Thêm sản phẩm mới</span>
+                </h2>
+
+                <form id="product-form">
+                    <div class="form-group">
+                        <label for="product-name">Tên sản phẩm:</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-price">Giá:</label>
+                        <input type="number" id="product-price" required min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-category">Danh mục:</label>
+                        <select id="product-category" required>
+                            <option value="">Chọn danh mục</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-image">URL hình ảnh:</label>
+                        <input type="url" id="product-image" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-stock">Số lượng tồn kho:</label>
+                        <input type="number" id="product-stock" required min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-description">Mô tả:</label>
+                        <textarea id="product-description" rows="3" required></textarea>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <button type="submit" class="form-btn" style="flex: 1;">
+                            <i class="fas fa-save"></i> Lưu
+                        </button>
+                        <button type="button" id="cancel-product-btn" class="form-btn" style="flex: 1; background: linear-gradient(135deg, #636e72, #2d3436);">
+                            <i class="fas fa-times"></i> Hủy
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Add/Edit Category Modal -->
+            <div class="form-container" id="category-modal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; max-width: 400px; width: 90%;">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">
+                    <i class="fas fa-tag"></i> <span id="category-modal-title">Thêm danh mục mới</span>
+                </h2>
+
+                <form id="category-form">
+                    <div class="form-group">
+                        <label for="category-name">Tên danh mục:</label>
+                        <input type="text" id="category-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category-description">Mô tả:</label>
+                        <textarea id="category-description" rows="3"></textarea>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <button type="submit" class="form-btn" style="flex: 1;">
+                            <i class="fas fa-save"></i> Lưu
+                        </button>
+                        <button type="button" id="cancel-category-btn" class="form-btn" style="flex: 1; background: linear-gradient(135deg, #636e72, #2d3436);">
+                            <i class="fas fa-times"></i> Hủy
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Về chúng tôi</h3>
+                        <p>TechStore là cửa hàng công nghệ hàng đầu Việt Nam, chuyên cung cấp các sản phẩm điện tử chất lượng cao với giá cả hợp lý.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Liên kết nhanh</h3>
+                        <ul style="list-style: none;">
+                            <li><a href="index.html">Trang chủ</a></li>
+                            <li><a href="contact.html">Liên hệ</a></li>
+                            <li><a href="login.html">Đăng nhập</a></li>
+                            <li><a href="register.html">Đăng ký</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Liên hệ</h3>
+                        <p><i class="fas fa-phone"></i> 1900 1234</p>
+                        <p><i class="fas fa-envelope"></i> info@techstore.vn</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận 1, TP.HCM</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 TechStore. Tất cả quyền được bảo lưu.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

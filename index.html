@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Cửa hàng công nghệ hàng đầu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-laptop"></i> TechStore
+            </a>
+            <nav class="nav">
+                <a href="index.html">Trang chủ</a>
+                <a href="products.html">Sản phẩm</a>
+                <a href="contact.html">Liên hệ</a>
+                <a href="login.html" id="login-link">Đăng nhập</a>
+                <a href="register.html" id="register-link">Đăng ký</a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Khám Phá Tương Lai Công Nghệ</h1>
+                <p>Nơi tốt nhất để tìm kiếm các thiết bị điện tử mới nhất</p>
+                <button class="hero-cta" onclick="window.location.href='products.html'">
+                    <i class="fas fa-shopping-bag"></i> Xem Sản Phẩm Ngay
+                </button>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section style="background: white; padding: 2rem; border-bottom: 1px solid #e2e8f0;">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <div style="display: flex; gap: 2rem; align-items: center; justify-content: center; flex-wrap: wrap;">
+                    <div style="position: relative; flex: 1; max-width: 500px;">
+                        <input type="text" id="search-input" placeholder="Nhập tên sản phẩm bạn muốn tìm..." style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 2px solid #2563eb; border-radius: 12px; font-size: 1rem;">
+                        <i class="fas fa-search" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #2563eb;"></i>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <label style="font-weight: 600; color: #374151;">Lọc theo danh mục:</label>
+                        <select id="category-filter" style="padding: 1rem; border: 2px solid #2563eb; border-radius: 12px; font-size: 1rem; min-width: 200px;">
+                            <option value="">Tất cả</option>
+                            <option value="Điện thoại">Điện thoại</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Máy tính bảng">Máy tính bảng</option>
+                            <option value="Đồng hồ">Đồng hồ</option>
+                            <option value="Phụ kiện">Phụ kiện</option>
+                            <option value="Màn hình">Màn hình</option>
+                            <option value="Linh kiện">Linh kiện</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section style="padding: 3rem 2rem; background: #f8fafc;">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <h2 style="font-size: 2.5rem; font-weight: 800; color: #1a1a1a; margin-bottom: 3rem; text-align: center;">
+                    SẢN PHẨM NỔI BẬT
+                </h2>
+
+                <div class="products-grid" id="products-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card fade-in" onclick="window.location.href='product-detail.html?id=1'">
+                        <div class="stock-info">Còn 50 sản phẩm</div>
+                        <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=300&h=300&fit=crop" alt="iPhone 15 Pro Max" class="product-image">
+                        <div class="product-info">
+                            <div class="product-category">Điện thoại</div>
+                            <h3 class="product-name">iPhone 15 Pro Max</h3>
+                            <p class="product-description">iPhone 15 Pro Max với chip A17 Pro mạnh mẽ</p>
+                            <div class="product-price">29.990.000 ₫</div>
+                            <div style="margin-bottom: 1rem; color: #64748b; font-size: 0.9rem;">
+                                <strong>Danh mục:</strong> Điện thoại
+                            </div>
+                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(1)">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào Giỏ
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card fade-in" onclick="window.location.href='product-detail.html?id=2'">
+                        <div class="stock-info">Còn 30 sản phẩm</div>
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=300&fit=crop" alt="MacBook Air M2" class="product-image">
+                        <div class="product-info">
+                            <div class="product-category">Laptop</div>
+                            <h3 class="product-name">MacBook Air M2</h3>
+                            <p class="product-description">MacBook Air với chip M2 mạnh mẽ</p>
+                            <div class="product-price">25.990.000 ₫</div>
+                            <div style="margin-bottom: 1rem; color: #64748b; font-size: 0.9rem;">
+                                <strong>Danh mục:</strong> Laptop
+                            </div>
+                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(2)">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào Giỏ
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card fade-in" onclick="window.location.href='product-detail.html?id=3'">
+                        <div class="stock-info">Còn 100 sản phẩm</div>
+                        <img src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=300&h=300&fit=crop" alt="AirPods Pro 2" class="product-image">
+                        <div class="product-info">
+                            <div class="product-category">Phụ kiện</div>
+                            <h3 class="product-name">AirPods Pro 2</h3>
+                            <p class="product-description">AirPods Pro thế hệ 2 với chống ồn</p>
+                            <div class="product-price">5.990.000 ₫</div>
+                            <div style="margin-bottom: 1rem; color: #64748b; font-size: 0.9rem;">
+                                <strong>Danh mục:</strong> Phụ kiện
+                            </div>
+                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(3)">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào Giỏ
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-card fade-in" onclick="window.location.href='product-detail.html?id=4'">
+                        <div class="stock-info">Còn 25 sản phẩm</div>
+                        <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=300&h=300&fit=crop" alt="iPad Pro 12.9" class="product-image">
+                        <div class="product-info">
+                            <div class="product-category">Máy tính bảng</div>
+                            <h3 class="product-name">iPad Pro 12.9</h3>
+                            <p class="product-description">iPad Pro 12.9 inch với chip M2</p>
+                            <div class="product-price">21.990.000 ₫</div>
+                            <div style="margin-bottom: 1rem; color: #64748b; font-size: 0.9rem;">
+                                <strong>Danh mục:</strong> Máy tính bảng
+                            </div>
+                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(4)">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào Giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View All Button -->
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="products.html" style="display: inline-block; padding: 1.2rem 2.5rem; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 1.1rem;">
+                        <i class="fas fa-th-large"></i> Xem Tất Cả Sản Phẩm
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section style="padding: 3rem 2rem; background: white;">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <h2 style="font-size: 2.5rem; font-weight: 800; color: #1a1a1a; margin-bottom: 3rem; text-align: center;">
+                    DANH MỤC SẢN PHẨM
+                </h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                    <div onclick="window.location.href='products.html?category=Điện thoại'" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 2rem; border-radius: 15px; text-align: center; cursor: pointer;">
+                        <i class="fas fa-mobile-alt" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h3>Điện thoại</h3>
+                    </div>
+                    <div onclick="window.location.href='products.html?category=Laptop'" style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 2rem; border-radius: 15px; text-align: center; cursor: pointer;">
+                        <i class="fas fa-laptop" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h3>Laptop</h3>
+                    </div>
+                    <div onclick="window.location.href='products.html?category=Máy tính bảng'" style="background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; padding: 2rem; border-radius: 15px; text-align: center; cursor: pointer;">
+                        <i class="fas fa-tablet-alt" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h3>Máy tính bảng</h3>
+                    </div>
+                    <div onclick="window.location.href='products.html?category=Phụ kiện'" style="background: linear-gradient(135deg, #43e97b, #38f9d7); color: white; padding: 2rem; border-radius: 15px; text-align: center; cursor: pointer;">
+                        <i class="fas fa-headphones" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h3>Phụ kiện</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về chúng tôi</h3>
+                <p>TechStore là cửa hàng công nghệ hàng đầu Việt Nam</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên kết</h3>
+                <ul style="list-style: none;">
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="products.html">Sản phẩm</a></li>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p><i class="fas fa-phone"></i> 1900 1234</p>
+                <p><i class="fas fa-envelope"></i> info@techstore.vn</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 TechStore. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Sử dụng biến cart đã được khai báo trong script.js
+        
+        // Ghi đè hàm addToCart để tương thích với trang index
+        function addToCartFromIndex(productId) {
+            // Sử dụng hàm addToCart từ script.js
+            addToCart(productId, 1);
+        }
+
+        // Cập nhật số lượng giỏ hàng khi trang được tải
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            console.log('TechStore trang web đã load thành công!');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ cá nhân - TechStore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-laptop"></i> TechStore
+                    </a>
+                    <nav class="nav">
+                        <a href="index.html">Trang chủ</a>
+                        <a href="products.html">Sản phẩm</a>
+                        <a href="products.html">Sản phẩm</a>
+                        <a href="products.html">Sản phẩm</a>
+                        <a href="products.html">Sản phẩm</a>
+                        <a href="contact.html">Liên hệ</a>
+                        <a href="login.html" id="login-link">Đăng nhập</a>
+                        <a href="register.html" id="register-link">Đăng ký</a>
+                        <a href="profile.html" id="profile-link" style="display: none;">Hồ sơ</a>
+                        <a href="admin.html" id="admin-link" style="display: none;">Quản trị</a>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cart-count">0</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Profile Header -->
+            <div class="hero">
+                <h1><i class="fas fa-user"></i> Hồ sơ cá nhân</h1>
+                <p>Quản lý thông tin tài khoản của bạn</p>
+            </div>
+
+            <!-- Messages -->
+            <div id="message-container"></div>
+
+            <!-- Profile Content -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Profile Info -->
+                <div class="cart-container">
+                    <h2 style="color: #333; margin-bottom: 1.5rem;">
+                        <i class="fas fa-user-circle"></i> Thông tin cá nhân
+                    </h2>
+                    <div id="profile-info">
+                        <!-- Profile information will be loaded here by JavaScript -->
+                    </div>
+                    <button id="edit-profile-btn" class="form-btn" style="margin-top: 1rem;">
+                        <i class="fas fa-edit"></i> Chỉnh sửa thông tin
+                    </button>
+                </div>
+
+                <!-- Order History -->
+                <div class="cart-container">
+                    <h2 style="color: #333; margin-bottom: 1.5rem;">
+                        <i class="fas fa-history"></i> Lịch sử đơn hàng
+                    </h2>
+                    <div id="order-history">
+                        <!-- Order history will be loaded here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Profile Form -->
+            <div class="form-container" id="edit-profile-form" style="display: none;">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">
+                    <i class="fas fa-edit"></i> Chỉnh sửa thông tin
+                </h2>
+
+                <form id="update-profile-form">
+                    <div class="form-group">
+                        <label for="edit-fullname">
+                            <i class="fas fa-user"></i> Họ và tên:
+                        </label>
+                        <input type="text" id="edit-fullname" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-email">
+                            <i class="fas fa-envelope"></i> Email:
+                        </label>
+                        <input type="email" id="edit-email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-phone">
+                            <i class="fas fa-phone"></i> Số điện thoại:
+                        </label>
+                        <input type="tel" id="edit-phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-address">
+                            <i class="fas fa-map-marker-alt"></i> Địa chỉ:
+                        </label>
+                        <textarea id="edit-address" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-birthday">
+                            <i class="fas fa-calendar"></i> Ngày sinh:
+                        </label>
+                        <input type="date" id="edit-birthday" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-gender">
+                            <i class="fas fa-venus-mars"></i> Giới tính:
+                        </label>
+                        <select id="edit-gender" required>
+                            <option value="">Chọn giới tính</option>
+                            <option value="male">Nam</option>
+                            <option value="female">Nữ</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <button type="submit" class="form-btn" style="flex: 1;">
+                            <i class="fas fa-save"></i> Lưu thay đổi
+                        </button>
+                        <button type="button" id="cancel-edit-btn" class="form-btn" style="flex: 1; background: linear-gradient(135deg, #636e72, #2d3436);">
+                            <i class="fas fa-times"></i> Hủy
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Change Password Form -->
+            <div class="form-container" id="change-password-form" style="display: none;">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">
+                    <i class="fas fa-key"></i> Đổi mật khẩu
+                </h2>
+
+                <form id="update-password-form">
+                    <div class="form-group">
+                        <label for="current-password">
+                            <i class="fas fa-lock"></i> Mật khẩu hiện tại:
+                        </label>
+                        <input type="password" id="current-password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="new-password">
+                            <i class="fas fa-lock"></i> Mật khẩu mới:
+                        </label>
+                        <input type="password" id="new-password" required>
+                        <div id="new-password-strength" style="margin-top: 0.5rem; font-size: 0.9rem;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-new-password">
+                            <i class="fas fa-lock"></i> Xác nhận mật khẩu mới:
+                        </label>
+                        <input type="password" id="confirm-new-password" required>
+                        <div id="new-password-match" style="margin-top: 0.5rem; font-size: 0.9rem;"></div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <button type="submit" class="form-btn" style="flex: 1;">
+                            <i class="fas fa-save"></i> Đổi mật khẩu
+                        </button>
+                        <button type="button" id="cancel-password-btn" class="form-btn" style="flex: 1; background: linear-gradient(135deg, #636e72, #2d3436);">
+                            <i class="fas fa-times"></i> Hủy
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Account Actions -->
+            <div class="cart-container" style="margin-top: 2rem;">
+                <h2 style="color: #333; margin-bottom: 1.5rem;">
+                    <i class="fas fa-cog"></i> Tùy chọn tài khoản
+                </h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <button id="change-password-btn" class="form-btn" style="background: linear-gradient(135deg, #74b9ff, #0984e3);">
+                        <i class="fas fa-key"></i> Đổi mật khẩu
+                    </button>
+                    <button id="logout-btn" class="form-btn" style="background: linear-gradient(135deg, #ff4757, #ff3742);">
+                        <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                    </button>
+                    <button id="delete-account-btn" class="form-btn" style="background: linear-gradient(135deg, #636e72, #2d3436);">
+                        <i class="fas fa-trash"></i> Xóa tài khoản
+                    </button>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="cart-container" style="margin-top: 2rem;">
+                <h2 style="color: #333; margin-bottom: 1.5rem;">
+                    <i class="fas fa-chart-bar"></i> Thống kê mua sắm
+                </h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-orders">0</div>
+                        <div class="stat-label">Tổng đơn hàng</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-spent">0 VNĐ</div>
+                        <div class="stat-label">Tổng chi tiêu</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="member-since">0</div>
+                        <div class="stat-label">Ngày thành viên</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Về chúng tôi</h3>
+                        <p>TechStore là cửa hàng công nghệ hàng đầu Việt Nam, chuyên cung cấp các sản phẩm điện tử chất lượng cao với giá cả hợp lý.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Liên kết nhanh</h3>
+                        <ul style="list-style: none;">
+                            <li><a href="index.html">Trang chủ</a></li>
+                            <li><a href="contact.html">Liên hệ</a></li>
+                            <li><a href="login.html">Đăng nhập</a></li>
+                            <li><a href="register.html">Đăng ký</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Liên hệ</h3>
+                        <p><i class="fas fa-phone"></i> 1900 1234</p>
+                        <p><i class="fas fa-envelope"></i> info@techstore.vn</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận 1, TP.HCM</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 TechStore. Tất cả quyền được bảo lưu.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

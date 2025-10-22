@@ -1,0 +1,193 @@
+{
+    "products": [{
+            "id": 1,
+            "name": "iPhone 15 Pro Max",
+            "price": 29990000,
+            "category": "Điện thoại",
+            "image": "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&h=500&fit=crop&q=80",
+            "stock": 50,
+            "description": "iPhone 15 Pro Max với chip A17 Pro mạnh mẽ, camera 48MP và màn hình Super Retina XDR 6.7 inch"
+        },
+        {
+            "id": 2,
+            "name": "MacBook Air M2",
+            "price": 25990000,
+            "category": "Laptop",
+            "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&h=500&fit=crop&q=80",
+            "stock": 30,
+            "description": "MacBook Air với chip M2, màn hình Liquid Retina 13.6 inch, pin dùng cả ngày"
+        },
+        {
+            "id": 3,
+            "name": "AirPods Pro 2",
+            "price": 5990000,
+            "category": "Phụ kiện",
+            "image": "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=500&h=500&fit=crop&q=80",
+            "stock": 100,
+            "description": "AirPods Pro thế hệ 2 với chống ồn chủ động, âm thanh không gian và pin dùng 6 giờ"
+        },
+        {
+            "id": 4,
+            "name": "iPad Pro 12.9",
+            "price": 21990000,
+            "category": "Máy tính bảng",
+            "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=500&fit=crop&q=80",
+            "stock": 25,
+            "description": "iPad Pro 12.9 inch với chip M2, màn hình Liquid Retina XDR và hỗ trợ Apple Pencil"
+        },
+        {
+            "id": 5,
+            "name": "Apple Watch Series 9",
+            "price": 8990000,
+            "category": "Đồng hồ",
+            "image": "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=500&h=500&fit=crop&q=80",
+            "stock": 75,
+            "description": "Apple Watch Series 9 với chip S9, màn hình Always-On Retina và theo dõi sức khỏe nâng cao"
+        },
+        {
+            "id": 6,
+            "name": "Samsung Galaxy S24 Ultra",
+            "price": 26990000,
+            "category": "Điện thoại",
+            "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=500&fit=crop&q=80",
+            "stock": 40,
+            "description": "Samsung Galaxy S24 Ultra với camera 200MP, S Pen và màn hình Dynamic AMOLED 2X"
+        },
+        {
+            "id": 7,
+            "name": "Dell XPS 13",
+            "price": 22990000,
+            "category": "Laptop",
+            "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=500&fit=crop&q=80",
+            "stock": 20,
+            "description": "Dell XPS 13 với Intel Core i7, màn hình InfinityEdge 13.4 inch và thiết kế siêu mỏng"
+        },
+        {
+            "id": 8,
+            "name": "Sony WH-1000XM5",
+            "price": 7990000,
+            "category": "Phụ kiện",
+            "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop&q=80",
+            "stock": 60,
+            "description": "Tai nghe Sony WH-1000XM5 với chống ồn hàng đầu thế giới và âm thanh chất lượng cao"
+        },
+        {
+            "id": 9,
+            "name": "Gaming Chair Pro",
+            "price": 4500000,
+            "category": "Phụ kiện",
+            "image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500&h=500&fit=crop&q=80",
+            "stock": 25,
+            "description": "Ghế gaming cao cấp với đệm lưng và cổ, hỗ trợ tối đa cho game thủ"
+        },
+        {
+            "id": 10,
+            "name": "Mechanical Keyboard RGB",
+            "price": 2500000,
+            "category": "Phụ kiện",
+            "image": "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=500&h=500&fit=crop&q=80",
+            "stock": 80,
+            "description": "Bàn phím cơ RGB với switch Cherry MX, đèn LED đa màu và thiết kế gaming"
+        },
+        {
+            "id": 11,
+            "name": "Gaming Mouse Wireless",
+            "price": 1800000,
+            "category": "Phụ kiện",
+            "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&h=500&fit=crop&q=80",
+            "stock": 120,
+            "description": "Chuột gaming không dây với độ phân giải cao và thời gian pin lâu"
+        },
+        {
+            "id": 12,
+            "name": "Monitor 4K 27 inch",
+            "price": 8500000,
+            "category": "Màn hình",
+            "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&h=500&fit=crop&q=80",
+            "stock": 35,
+            "description": "Màn hình 4K 27 inch với tần số quét 144Hz, màu sắc chính xác và góc nhìn rộng"
+        },
+        {
+            "id": 13,
+            "name": "Webcam 4K Pro",
+            "price": 3200000,
+            "category": "Phụ kiện",
+            "image": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=500&h=500&fit=crop&q=80",
+            "stock": 45,
+            "description": "Webcam 4K với micro tích hợp, tự động điều chỉnh ánh sáng và chống nhiễu"
+        },
+        {
+            "id": 14,
+            "name": "Gaming Headset 7.1",
+            "price": 4200000,
+            "category": "Phụ kiện",
+            "image": "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500&h=500&fit=crop&q=80",
+            "stock": 55,
+            "description": "Tai nghe gaming 7.1 surround sound với mic khử nhiễu và đèn LED RGB"
+        },
+        {
+            "id": 15,
+            "name": "SSD 1TB NVMe",
+            "price": 3200000,
+            "category": "Linh kiện",
+            "image": "https://images.unsplash.com/photo-1591799264318-7e155efd0b52?w=500&h=500&fit=crop&q=80",
+            "stock": 90,
+            "description": "Ổ cứng SSD NVMe 1TB với tốc độ đọc/ghi cao, phù hợp cho gaming và làm việc"
+        },
+        {
+            "id": 16,
+            "name": "RAM DDR5 32GB",
+            "price": 4500000,
+            "category": "Linh kiện",
+            "image": "https://images.unsplash.com/photo-1591799264318-7e155efd0b52?w=500&h=500&fit=crop&q=80",
+            "stock": 40,
+            "description": "RAM DDR5 32GB với tốc độ cao, hỗ trợ đa nhiệm và gaming mượt mà"
+        },
+        {
+            "id": 17,
+            "name": "Graphics Card RTX 4080",
+            "price": 25990000,
+            "category": "Linh kiện",
+            "image": "https://images.unsplash.com/photo-1591799264318-7e155efd0b52?w=500&h=500&fit=crop&q=80",
+            "stock": 15,
+            "description": "Card đồ họa RTX 4080 với ray tracing và DLSS, hiệu năng gaming cực mạnh"
+        },
+        {
+            "id": 18,
+            "name": "Power Supply 850W",
+            "price": 3800000,
+            "category": "Linh kiện",
+            "image": "https://images.unsplash.com/photo-1591799264318-7e155efd0b52?w=500&h=500&fit=crop&q=80",
+            "stock": 30,
+            "description": "Nguồn máy tính 850W 80+ Gold với hiệu suất cao và độ ổn định tuyệt vời"
+        },
+        {
+            "id": 19,
+            "name": "Motherboard Gaming",
+            "price": 5500000,
+            "category": "Linh kiện",
+            "image": "https://images.unsplash.com/photo-1591799264318-7e155efd0b52?w=500&h=500&fit=crop&q=80",
+            "stock": 25,
+            "description": "Bo mạch chủ gaming với WiFi 6, Bluetooth 5.0 và hỗ trợ DDR5"
+        },
+        {
+            "id": 20,
+            "name": "CPU Cooler AIO",
+            "price": 2800000,
+            "category": "Linh kiện",
+            "image": "https://images.unsplash.com/photo-1591799264318-7e155efd0b52?w=500&h=500&fit=crop&q=80",
+            "stock": 50,
+            "description": "Tản nhiệt nước AIO với đèn LED RGB, làm mát hiệu quả cho CPU"
+        }
+    ],
+    "categories": [
+        "Tất cả",
+        "Điện thoại",
+        "Laptop",
+        "Máy tính bảng",
+        "Đồng hồ",
+        "Phụ kiện",
+        "Màn hình",
+        "Linh kiện"
+    ]
+}

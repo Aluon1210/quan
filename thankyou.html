@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cảm ơn bạn - TechStore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-laptop"></i> TechStore
+                    </a>
+                    <nav class="nav">
+                        <a href="index.html">Trang chủ</a>
+                        <a href="products.html">Sản phẩm</a>
+                        <a href="products.html">Sản phẩm</a>
+                        <a href="products.html">Sản phẩm</a>
+                        <a href="products.html">Sản phẩm</a>
+                        <a href="contact.html">Liên hệ</a>
+                        <a href="login.html" id="login-link">Đăng nhập</a>
+                        <a href="register.html" id="register-link">Đăng ký</a>
+                        <a href="profile.html" id="profile-link" style="display: none;">Hồ sơ</a>
+                        <a href="admin.html" id="admin-link" style="display: none;">Quản trị</a>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cart-count">0</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Thank You Container -->
+            <div class="thank-you-container">
+                <div class="thank-you-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1 class="thank-you-title">Cảm ơn bạn đã mua hàng!</h1>
+                <p class="thank-you-message">
+                    Đơn hàng của bạn đã được xác nhận thành công. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất để xác nhận và giao hàng.
+                </p>
+
+                <!-- Order Details -->
+                <div class="cart-container" id="order-details" style="max-width: 600px; margin: 2rem auto;">
+                    <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">
+                        <i class="fas fa-receipt"></i> Chi tiết đơn hàng
+                    </h2>
+                    <div id="order-info">
+                        <!-- Order information will be loaded here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div style="margin-top: 3rem;">
+                    <a href="index.html" class="back-to-home">
+                        <i class="fas fa-home"></i> Về trang chủ
+                    </a>
+                    <a href="contact.html" class="back-to-home" style="margin-left: 1rem; background: linear-gradient(135deg, #00b894, #00a085);">
+                        <i class="fas fa-envelope"></i> Liên hệ hỗ trợ
+                    </a>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="cart-container" style="max-width: 800px; margin: 3rem auto; text-align: left;">
+                    <h3 style="color: #333; margin-bottom: 1.5rem;">
+                        <i class="fas fa-info-circle"></i> Thông tin bổ sung
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                        <div>
+                            <h4 style="color: #74b9ff; margin-bottom: 1rem;">
+                                <i class="fas fa-shipping-fast"></i> Giao hàng
+                            </h4>
+                            <ul style="color: #666; line-height: 1.8;">
+                                <li>Thời gian giao hàng: 1-3 ngày làm việc</li>
+                                <li>Miễn phí giao hàng cho đơn từ 500.000 VNĐ</li>
+                                <li>Giao hàng toàn quốc</li>
+                                <li>Kiểm tra hàng trước khi thanh toán</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: #74b9ff; margin-bottom: 1rem;">
+                                <i class="fas fa-headset"></i> Hỗ trợ
+                            </h4>
+                            <ul style="color: #666; line-height: 1.8;">
+                                <li>Hotline: 1900 1234</li>
+                                <li>Email: support@techstore.vn</li>
+                                <li>Thời gian: 8:00 - 22:00 hàng ngày</li>
+                                <li>Bảo hành chính hãng</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div style="margin-top: 3rem;">
+                    <h3 style="color: #333; margin-bottom: 1.5rem;">Theo dõi chúng tôi</h3>
+                    <div style="display: flex; justify-content: center; gap: 1rem;">
+                        <a href="#" style="display: inline-block; width: 50px; height: 50px; background: linear-gradient(135deg, #3b5998, #2d4373); color: white; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none; transition: all 0.3s ease;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" style="display: inline-block; width: 50px; height: 50px; background: linear-gradient(135deg, #1da1f2, #0d8bd9); color: white; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none; transition: all 0.3s ease;">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" style="display: inline-block; width: 50px; height: 50px; background: linear-gradient(135deg, #e4405f, #c13584); color: white; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none; transition: all 0.3s ease;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" style="display: inline-block; width: 50px; height: 50px; background: linear-gradient(135deg, #0077b5, #005885); color: white; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none; transition: all 0.3s ease;">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Về chúng tôi</h3>
+                        <p>TechStore là cửa hàng công nghệ hàng đầu Việt Nam, chuyên cung cấp các sản phẩm điện tử chất lượng cao với giá cả hợp lý.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Liên kết nhanh</h3>
+                        <ul style="list-style: none;">
+                            <li><a href="index.html">Trang chủ</a></li>
+                            <li><a href="contact.html">Liên hệ</a></li>
+                            <li><a href="login.html">Đăng nhập</a></li>
+                            <li><a href="register.html">Đăng ký</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Liên hệ</h3>
+                        <p><i class="fas fa-phone"></i> 1900 1234</p>
+                        <p><i class="fas fa-envelope"></i> info@techstore.vn</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận 1, TP.HCM</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 TechStore. Tất cả quyền được bảo lưu.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

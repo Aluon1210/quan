@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng - TechStore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-laptop"></i> TechStore
+            </a>
+            <nav class="nav">
+                <a href="index.html">Trang chủ</a>
+                <a href="products.html">Sản phẩm</a>
+                <a href="contact.html">Liên hệ</a>
+                <a href="login.html" id="login-link">Đăng nhập</a>
+                <a href="register.html" id="register-link">Đăng ký</a>
+                <a href="profile.html" id="profile-link" style="display: none;">Hồ sơ</a>
+                <a href="admin.html" id="admin-link" style="display: none;">Quản trị</a>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+        <!-- Main Content -->
+    <main class="main-content" id="main-content">
+            <!-- Page Title -->
+            <div class="hero">
+                <h1><i class="fas fa-shopping-cart"></i> Giỏ hàng của bạn</h1>
+                <p>Kiểm tra và chỉnh sửa các sản phẩm trong giỏ hàng</p>
+            </div>
+
+            <!-- Cart Container -->
+            <div class="cart-container" id="cart-container">
+                <!-- Cart items will be loaded here by JavaScript -->
+            </div>
+
+            <!-- Empty Cart Message -->
+            <div id="empty-cart" style="display: none; text-align: center; padding: 4rem; color: #666;">
+                <i class="fas fa-shopping-cart" style="font-size: 5rem; margin-bottom: 2rem; opacity: 0.3;"></i>
+                <h2>Giỏ hàng trống</h2>
+                <p>Bạn chưa có sản phẩm nào trong giỏ hàng</p>
+                <a href="index.html" class="back-to-home" style="margin-top: 2rem;">
+                    <i class="fas fa-arrow-left"></i> Tiếp tục mua sắm
+                </a>
+            </div>
+
+            <!-- Cart Total -->
+            <div class="cart-total" id="cart-total" style="display: none;">
+                <h3>Tổng cộng</h3>
+                <div class="total-amount" id="total-amount">0 VNĐ</div>
+                <button class="checkout-btn" id="checkout-btn">
+                    <i class="fas fa-credit-card"></i> Thanh toán
+                </button>
+            </div>
+
+            <!-- Checkout Form -->
+            <div class="form-container" id="checkout-form" style="display: none;">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">
+                    <i class="fas fa-credit-card"></i> Thông tin thanh toán
+                </h2>
+                <form id="payment-form">
+                    <div class="form-group">
+                        <label for="customer-name">Họ và tên:</label>
+                        <input type="text" id="customer-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-email">Email:</label>
+                        <input type="email" id="customer-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-phone">Số điện thoại:</label>
+                        <input type="tel" id="customer-phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-address">Địa chỉ giao hàng:</label>
+                        <textarea id="customer-address" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment-method">Phương thức thanh toán:</label>
+                        <select id="payment-method" required>
+                            <option value="">Chọn phương thức thanh toán</option>
+                            <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+                            <option value="bank">Chuyển khoản ngân hàng</option>
+                            <option value="card">Thẻ tín dụng/ghi nợ</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Ghi chú (tùy chọn):</label>
+                        <textarea id="notes" rows="2" placeholder="Ghi chú thêm về đơn hàng..."></textarea>
+                    </div>
+                    <button type="submit" class="form-btn">
+                        <i class="fas fa-check"></i> Xác nhận đơn hàng
+                    </button>
+                </form>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="cart-container" id="order-summary" style="display: none;">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">
+                    <i class="fas fa-receipt"></i> Tóm tắt đơn hàng
+                </h2>
+                <div id="order-items"></div>
+                <div class="cart-total">
+                    <h3>Tổng cộng</h3>
+                    <div class="total-amount" id="order-total">0 VNĐ</div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Về chúng tôi</h3>
+                        <p>TechStore là cửa hàng công nghệ hàng đầu Việt Nam, chuyên cung cấp các sản phẩm điện tử chất lượng cao với giá cả hợp lý.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Liên kết nhanh</h3>
+                        <ul style="list-style: none;">
+                            <li><a href="index.html">Trang chủ</a></li>
+                            <li><a href="contact.html">Liên hệ</a></li>
+                            <li><a href="login.html">Đăng nhập</a></li>
+                            <li><a href="register.html">Đăng ký</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Liên hệ</h3>
+                        <p><i class="fas fa-phone"></i> 1900 1234</p>
+                        <p><i class="fas fa-envelope"></i> info@techstore.vn</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận 1, TP.HCM</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 TechStore. Tất cả quyền được bảo lưu.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

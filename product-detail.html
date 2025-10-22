@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm - TechStore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-laptop"></i> TechStore
+                    </a>
+                    <nav class="nav">
+                        <a href="index.html">Trang chủ</a>
+                        <a href="products.html">Sản phẩm</a>
+                        <a href="contact.html">Liên hệ</a>
+                        <a href="login.html" id="login-link">Đăng nhập</a>
+                        <a href="register.html" id="register-link">Đăng ký</a>
+                        <a href="profile.html" id="profile-link" style="display: none;">Hồ sơ</a>
+                        <a href="admin.html" id="admin-link" style="display: none;">Quản trị</a>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cart-count">0</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Breadcrumb -->
+            <div style="padding: 1rem 2rem; background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                <div style="max-width: 1400px; margin: 0 auto;">
+                    <nav style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                        <a href="index.html" style="color: #2563eb; text-decoration: none;">Trang chủ</a>
+                        <i class="fas fa-chevron-right" style="color: #64748b; font-size: 0.8rem;"></i>
+                        <a href="products.html" style="color: #2563eb; text-decoration: none;">Sản phẩm</a>
+                        <i class="fas fa-chevron-right" style="color: #64748b; font-size: 0.8rem;"></i>
+                        <span style="color: #64748b;" id="breadcrumb-product">Chi tiết sản phẩm</span>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Product Detail -->
+            <div id="product-detail-container" style="padding: 2rem; max-width: 1400px; margin: 0 auto;">
+                <!-- Loading -->
+                <div id="loading" style="text-align: center; padding: 4rem;">
+                    <div class="loading"></div>
+                    <p style="margin-top: 1rem; color: #64748b;">Đang tải thông tin sản phẩm...</p>
+                </div>
+
+                <!-- Product Not Found -->
+                <div id="product-not-found" style="display: none; text-align: center; padding: 4rem;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: #f59e0b; margin-bottom: 1rem;"></i>
+                    <h2 style="color: #1a1a1a; margin-bottom: 1rem;">Không tìm thấy sản phẩm</h2>
+                    <p style="color: #64748b; margin-bottom: 2rem;">Sản phẩm bạn tìm kiếm không tồn tại hoặc đã bị xóa.</p>
+                    <a href="products.html" class="back-to-home">
+                        <i class="fas fa-arrow-left"></i> Quay lại danh sách sản phẩm
+                    </a>
+                </div>
+
+                <!-- Product Content -->
+                <div id="product-content" style="display: none;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
+                        <!-- Product Images -->
+                        <div>
+                            <div style="position: relative;">
+                                <img id="product-main-image" src="" alt="" style="width: 100%; height: 500px; object-fit: cover; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                                <div id="product-badge" style="position: absolute; top: 1rem; left: 1rem; background: #059669; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">
+                                    Còn <span id="product-stock">0</span> sản phẩm
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Info -->
+                        <div>
+                            <div id="product-category" style="color: #2563eb; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;"></div>
+                            <h1 id="product-name" style="font-size: 2.5rem; font-weight: 800; color: #1a1a1a; margin-bottom: 1rem; line-height: 1.2;"></h1>
+                            <div id="product-price" style="font-size: 2rem; font-weight: 800; color: #059669; margin-bottom: 2rem;"></div>
+
+                            <div id="product-description" style="color: #64748b; font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;"></div>
+
+                            <!-- Product Features -->
+                            <div style="background: #f8fafc; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                                <h3 style="color: #1a1a1a; margin-bottom: 1rem; font-weight: 700;">Tính năng nổi bật</h3>
+                                <ul id="product-features" style="list-style: none; color: #64748b; line-height: 2;">
+                                    <!-- Features will be loaded here -->
+                                </ul>
+                            </div>
+
+                            <!-- Quantity and Add to Cart -->
+                            <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 2rem;">
+                                <label for="quantity" style="font-weight: 600; color: #374151;">Số lượng:</label>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <button id="decrease-qty" style="width: 40px; height: 40px; border: 2px solid #e2e8f0; background: white; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <input type="number" id="quantity" value="1" min="1" style="width: 80px; text-align: center; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-weight: 600;">
+                                    <button id="increase-qty" style="width: 40px; height: 40px; border: 2px solid #e2e8f0; background: white; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 1rem;">
+                                <button id="add-to-cart-btn" class="add-to-cart" style="flex: 1; padding: 1.2rem; font-size: 1.1rem;">
+                                    <i class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
+                                </button>
+                                <button id="buy-now-btn" style="flex: 1; padding: 1.2rem; background: linear-gradient(135deg, #7c3aed, #5b21b6); color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                                    <i class="fas fa-bolt"></i> Mua ngay
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Specifications -->
+                    <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); margin-bottom: 3rem;">
+                        <h2 style="color: #1a1a1a; margin-bottom: 2rem; font-weight: 800;">Thông số kỹ thuật</h2>
+                        <div id="product-specs" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                            <!-- Specifications will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Related Products -->
+                    <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
+                        <h2 style="color: #1a1a1a; margin-bottom: 2rem; font-weight: 800;">Sản phẩm liên quan</h2>
+                        <div id="related-products" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                            <!-- Related products will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Về chúng tôi</h3>
+                        <p>TechStore là cửa hàng công nghệ hàng đầu Việt Nam, chuyên cung cấp các sản phẩm điện tử chất lượng cao với giá cả hợp lý.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Liên kết nhanh</h3>
+                        <ul style="list-style: none;">
+                            <li><a href="index.html">Trang chủ</a></li>
+                            <li><a href="products.html">Sản phẩm</a></li>
+                            <li><a href="contact.html">Liên hệ</a></li>
+                            <li><a href="login.html">Đăng nhập</a></li>
+                            <li><a href="register.html">Đăng ký</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Liên hệ</h3>
+                        <p><i class="fas fa-phone"></i> 1900 1234</p>
+                        <p><i class="fas fa-envelope"></i> info@techstore.vn</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận 1, TP.HCM</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 TechStore. Tất cả quyền được bảo lưu.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Product detail page specific JavaScript
+        let currentProduct = null;
+        let quantity = 1;
+
+        // Get product ID from URL
+        function getProductIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return parseInt(urlParams.get('id'));
+        }
+
+        // Load product detail
+        async function loadProductDetail() {
+            const productId = getProductIdFromUrl();
+            if (!productId) {
+                showProductNotFound();
+                return;
+            }
+
+            try {
+                const response = await fetch('products.json');
+                const data = await response.json();
+                const product = data.products.find(p => p.id === productId);
+
+                if (!product) {
+                    showProductNotFound();
+                    return;
+                }
+
+                currentProduct = product;
+                displayProductDetail(product);
+                loadRelatedProducts(data.products, productId);
+            } catch (error) {
+                console.error('Error loading product:', error);
+                showProductNotFound();
+            }
+        }
+
+        // Display product detail
+        function displayProductDetail(product) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('product-content').style.display = 'block';
+
+            // Update breadcrumb
+            document.getElementById('breadcrumb-product').textContent = product.name;
+
+            // Update page title
+            document.title = `${product.name} - TechStore`;
+
+            // Update product info
+            document.getElementById('product-category').textContent = product.category;
+            document.getElementById('product-name').textContent = product.name;
+            document.getElementById('product-price').textContent = formatCurrency(product.price);
+            document.getElementById('product-description').textContent = product.description;
+            document.getElementById('product-main-image').src = product.image;
+            document.getElementById('product-main-image').alt = product.name;
+            document.getElementById('product-stock').textContent = product.stock;
+
+            // Update stock badge color
+            const stockBadge = document.getElementById('product-badge');
+            if (product.stock > 50) {
+                stockBadge.style.background = '#059669';
+            } else if (product.stock > 10) {
+                stockBadge.style.background = '#f59e0b';
+            } else {
+                stockBadge.style.background = '#ef4444';
+            }
+
+            // Generate features
+            generateProductFeatures(product);
+
+            // Generate specifications
+            generateProductSpecs(product);
+        }
+
+        // Generate product features
+        function generateProductFeatures(product) {
+            const featuresList = document.getElementById('product-features');
+            const features = [
+                `Chất lượng cao với thiết kế hiện đại`,
+                `Phù hợp cho ${product.category.toLowerCase()}`,
+                `Giá cả hợp lý và cạnh tranh`,
+                `Bảo hành chính hãng`,
+                `Hỗ trợ giao hàng toàn quốc`
+            ];
+
+            featuresList.innerHTML = features.map(feature =>
+                `<li><i class="fas fa-check" style="color: #059669; margin-right: 0.5rem;"></i>${feature}</li>`
+            ).join('');
+        }
+
+        // Generate product specifications
+        function generateProductSpecs(product) {
+            const specsContainer = document.getElementById('product-specs');
+            const specs = [{
+                label: 'Tên sản phẩm',
+                value: product.name
+            }, {
+                label: 'Danh mục',
+                value: product.category
+            }, {
+                label: 'Giá',
+                value: formatCurrency(product.price)
+            }, {
+                label: 'Số lượng tồn kho',
+                value: `${product.stock} sản phẩm`
+            }, {
+                label: 'Trạng thái',
+                value: product.stock > 0 ? 'Còn hàng' : 'Hết hàng'
+            }, {
+                label: 'Bảo hành',
+                value: '12 tháng'
+            }, {
+                label: 'Xuất xứ',
+                value: 'Nhập khẩu chính hãng'
+            }, {
+                label: 'Giao hàng',
+                value: 'Toàn quốc'
+            }];
+
+            specsContainer.innerHTML = specs.map(spec => `
+                <div style="display: flex; justify-content: space-between; padding: 0.75rem; border-bottom: 1px solid #f1f5f9;">
+                    <span style="font-weight: 600; color: #374151;">${spec.label}:</span>
+                    <span style="color: #64748b;">${spec.value}</span>
+                </div>
+            `).join('');
+        }
+
+        // Load related products
+        function loadRelatedProducts(products, currentProductId) {
+            const relatedProducts = products
+                .filter(p => p.id !== currentProductId)
+                .slice(0, 4);
+
+            const relatedContainer = document.getElementById('related-products');
+            relatedContainer.innerHTML = relatedProducts.map(product => `
+                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; cursor: pointer;" onclick="window.location.href='product-detail.html?id=${product.id}'">
+                    <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 1rem;">
+                        <div style="color: #2563eb; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem;">${product.category}</div>
+                        <h4 style="color: #1a1a1a; margin-bottom: 0.5rem; font-weight: 700;">${product.name}</h4>
+                        <div style="color: #059669; font-weight: 700; font-size: 1.1rem;">${formatCurrency(product.price)}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Show product not found
+        function showProductNotFound() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('product-not-found').style.display = 'block';
+        }
+
+        // Quantity controls
+        document.addEventListener('DOMContentLoaded', function() {
+            const decreaseBtn = document.getElementById('decrease-qty');
+            const increaseBtn = document.getElementById('increase-qty');
+            const quantityInput = document.getElementById('quantity');
+
+            decreaseBtn.addEventListener('click', function() {
+                if (quantity > 1) {
+                    quantity--;
+                    quantityInput.value = quantity;
+                }
+            });
+
+            increaseBtn.addEventListener('click', function() {
+                if (currentProduct && quantity < currentProduct.stock) {
+                    quantity++;
+                    quantityInput.value = quantity;
+                }
+            });
+
+            quantityInput.addEventListener('change', function() {
+                const value = parseInt(this.value);
+                if (value >= 1 && value <= (currentProduct ? currentProduct.stock : 999)) {
+                    quantity = value;
+                } else {
+                    this.value = quantity;
+                }
+            });
+
+            // Add to cart
+            document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+                if (currentProduct) {
+                    for (let i = 0; i < quantity; i++) {
+                        addToCart(currentProduct.id);
+                    }
+                    showMessage(`Đã thêm ${quantity} ${currentProduct.name} vào giỏ hàng!`, 'success');
+                }
+            });
+
+            // Buy now
+            document.getElementById('buy-now-btn').addEventListener('click', function() {
+                if (currentProduct) {
+                    // Clear cart and add this product
+                    cart = [];
+                    for (let i = 0; i < quantity; i++) {
+                        addToCart(currentProduct.id);
+                    }
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    window.location.href = 'cart.html';
+                }
+            });
+
+            // Load product detail
+            loadProductDetail();
+        });
+    </script>
+</body>
+
+</html>
