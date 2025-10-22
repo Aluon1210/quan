@@ -43,7 +43,7 @@
             </div>
         </section>
 
-        <!-- Search Section -->
+        <!-- Search & Filters Section -->
         <section style="background: white; padding: 2rem; border-bottom: 1px solid #e2e8f0;">
             <div style="max-width: 1200px; margin: 0 auto;">
                 <div style="display: flex; gap: 2rem; align-items: center; justify-content: center; flex-wrap: wrap;">
@@ -52,101 +52,52 @@
                         <i class="fas fa-search" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #2563eb;"></i>
                     </div>
                     <div style="display: flex; align-items: center; gap: 1rem;">
-                        <label style="font-weight: 600; color: #374151;">Lọc theo danh mục:</label>
+                        <label style="font-weight: 600; color: #374151;">Danh mục:</label>
                         <select id="category-filter" style="padding: 1rem; border: 2px solid #2563eb; border-radius: 12px; font-size: 1rem; min-width: 200px;">
                             <option value="">Tất cả</option>
-                            <option value="Điện thoại">Điện thoại</option>
-                            <option value="Laptop">Laptop</option>
-                            <option value="Máy tính bảng">Máy tính bảng</option>
-                            <option value="Đồng hồ">Đồng hồ</option>
-                            <option value="Phụ kiện">Phụ kiện</option>
-                            <option value="Màn hình">Màn hình</option>
-                            <option value="Linh kiện">Linh kiện</option>
                         </select>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <label style="font-weight: 600; color: #374151;">Giá:</label>
+                        <select id="price-filter" style="padding: 1rem; border: 2px solid #2563eb; border-radius: 12px; font-size: 1rem; min-width: 200px;">
+                            <option value="">Tất cả mức giá</option>
+                            <option value="0-5000000">Dưới 5 triệu</option>
+                            <option value="5000000-10000000">5 - 10 triệu</option>
+                            <option value="10000000-20000000">10 - 20 triệu</option>
+                            <option value="20000000-999999999">Trên 20 triệu</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button id="clear-filters" style="padding: 0.9rem 1.2rem; background: linear-gradient(135deg, #636e72, #2d3436); color: white; border: none; border-radius: 12px; font-weight: 600; cursor: pointer;">
+                            <i class="fas fa-times"></i> Xóa bộ lọc
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Featured Products -->
+        <!-- Products Section -->
         <section style="padding: 3rem 2rem; background: #f8fafc;">
             <div style="max-width: 1200px; margin: 0 auto;">
-                <h2 style="font-size: 2.5rem; font-weight: 800; color: #1a1a1a; margin-bottom: 3rem; text-align: center;">
-                    SẢN PHẨM NỔI BẬT
-                </h2>
+                <div style="display:flex; align-items:center; justify-content: space-between; gap:1rem; margin-bottom:1.5rem;">
+                    <h2 style="font-size: 2rem; font-weight: 800; color: #1a1a1a;">Sản phẩm</h2>
+                    <p style="color:#64748b;">Hiển thị <span id="showing-count">0</span> sản phẩm</p>
+                </div>
 
-                <div class="products-grid" id="products-grid">
-                    <!-- Product 1 -->
-                    <div class="product-card fade-in" onclick="window.location.href='product-detail.html?id=1'">
-                        <div class="stock-info">Còn 50 sản phẩm</div>
-                        <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=300&h=300&fit=crop" alt="iPhone 15 Pro Max" class="product-image">
-                        <div class="product-info">
-                            <div class="product-category">Điện thoại</div>
-                            <h3 class="product-name">iPhone 15 Pro Max</h3>
-                            <p class="product-description">iPhone 15 Pro Max với chip A17 Pro mạnh mẽ</p>
-                            <div class="product-price">29.990.000 ₫</div>
-                            <div style="margin-bottom: 1rem; color: #64748b; font-size: 0.9rem;">
-                                <strong>Danh mục:</strong> Điện thoại
-                            </div>
-                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(1)">
-                                <i class="fas fa-shopping-cart"></i> Thêm vào Giỏ
-                            </button>
-                        </div>
-                    </div>
+                <!-- Loading -->
+                <div id="loading" style="display:none; text-align: center; padding: 2rem;">
+                    <div class="loading" style="margin: 0 auto;"></div>
+                    <p style="margin-top: 1rem; color: #64748b;">Đang tải sản phẩm...</p>
+                </div>
 
-                    <!-- Product 2 -->
-                    <div class="product-card fade-in" onclick="window.location.href='product-detail.html?id=2'">
-                        <div class="stock-info">Còn 30 sản phẩm</div>
-                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=300&fit=crop" alt="MacBook Air M2" class="product-image">
-                        <div class="product-info">
-                            <div class="product-category">Laptop</div>
-                            <h3 class="product-name">MacBook Air M2</h3>
-                            <p class="product-description">MacBook Air với chip M2 mạnh mẽ</p>
-                            <div class="product-price">25.990.000 ₫</div>
-                            <div style="margin-bottom: 1rem; color: #64748b; font-size: 0.9rem;">
-                                <strong>Danh mục:</strong> Laptop
-                            </div>
-                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(2)">
-                                <i class="fas fa-shopping-cart"></i> Thêm vào Giỏ
-                            </button>
-                        </div>
-                    </div>
+                <!-- Products Grid -->
+                <div class="products-grid" id="products-grid"></div>
 
-                    <!-- Product 3 -->
-                    <div class="product-card fade-in" onclick="window.location.href='product-detail.html?id=3'">
-                        <div class="stock-info">Còn 100 sản phẩm</div>
-                        <img src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=300&h=300&fit=crop" alt="AirPods Pro 2" class="product-image">
-                        <div class="product-info">
-                            <div class="product-category">Phụ kiện</div>
-                            <h3 class="product-name">AirPods Pro 2</h3>
-                            <p class="product-description">AirPods Pro thế hệ 2 với chống ồn</p>
-                            <div class="product-price">5.990.000 ₫</div>
-                            <div style="margin-bottom: 1rem; color: #64748b; font-size: 0.9rem;">
-                                <strong>Danh mục:</strong> Phụ kiện
-                            </div>
-                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(3)">
-                                <i class="fas fa-shopping-cart"></i> Thêm vào Giỏ
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product 4 -->
-                    <div class="product-card fade-in" onclick="window.location.href='product-detail.html?id=4'">
-                        <div class="stock-info">Còn 25 sản phẩm</div>
-                        <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=300&h=300&fit=crop" alt="iPad Pro 12.9" class="product-image">
-                        <div class="product-info">
-                            <div class="product-category">Máy tính bảng</div>
-                            <h3 class="product-name">iPad Pro 12.9</h3>
-                            <p class="product-description">iPad Pro 12.9 inch với chip M2</p>
-                            <div class="product-price">21.990.000 ₫</div>
-                            <div style="margin-bottom: 1rem; color: #64748b; font-size: 0.9rem;">
-                                <strong>Danh mục:</strong> Máy tính bảng
-                            </div>
-                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(4)">
-                                <i class="fas fa-shopping-cart"></i> Thêm vào Giỏ
-                            </button>
-                        </div>
-                    </div>
+                <!-- No Products -->
+                <div id="no-products" style="display: none; text-align: center; padding: 4rem; color: #666;">
+                    <i class="fas fa-search" style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                    <h3>Không tìm thấy sản phẩm nào</h3>
+                    <p>Hãy thử thay đổi bộ lọc hoặc từ khóa tìm kiếm</p>
                 </div>
 
                 <!-- View All Button -->

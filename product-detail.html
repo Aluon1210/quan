@@ -185,7 +185,7 @@
             return parseInt(urlParams.get('id'));
         }
 
-        // Load product detail
+        // Load product detail (use global products via loadProducts)
         async function loadProductDetail() {
             const productId = getProductIdFromUrl();
             if (!productId) {
@@ -194,9 +194,8 @@
             }
 
             try {
-                const response = await fetch('products.json');
-                const data = await response.json();
-                const product = data.products.find(p => p.id === productId);
+                const { products: loadedProducts } = await loadProducts();
+                const product = loadedProducts.find(p => p.id === productId);
 
                 if (!product) {
                     showProductNotFound();
@@ -205,7 +204,7 @@
 
                 currentProduct = product;
                 displayProductDetail(product);
-                loadRelatedProducts(data.products, productId);
+                loadRelatedProducts(loadedProducts, productId);
             } catch (error) {
                 console.error('Error loading product:', error);
                 showProductNotFound();
@@ -359,9 +358,7 @@
             // Add to cart
             document.getElementById('add-to-cart-btn').addEventListener('click', function() {
                 if (currentProduct) {
-                    for (let i = 0; i < quantity; i++) {
-                        addToCart(currentProduct.id);
-                    }
+                    addToCart(currentProduct.id, quantity);
                     showMessage(`Đã thêm ${quantity} ${currentProduct.name} vào giỏ hàng!`, 'success');
                 }
             });
@@ -371,9 +368,7 @@
                 if (currentProduct) {
                     // Clear cart and add this product
                     cart = [];
-                    for (let i = 0; i < quantity; i++) {
-                        addToCart(currentProduct.id);
-                    }
+                    addToCart(currentProduct.id, quantity);
                     localStorage.setItem('cart', JSON.stringify(cart));
                     updateCartCount();
                     window.location.href = 'cart.html';
