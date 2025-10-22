@@ -930,24 +930,7 @@ function displayAdminDashboard() {
         return;
     }
 
-    // Add back to home button if it doesn't exist
-    const adminHeader = document.querySelector('.admin-header');
-    if (adminHeader && !document.getElementById('back-to-home')) {
-        const backButton = document.createElement('a');
-        backButton.id = 'back-to-home';
-        backButton.href = 'index.html';
-        backButton.className = 'back-to-home-btn';
-        backButton.innerHTML = '<i class="fas fa-home"></i> Quay về trang chủ';
-        backButton.style.position = 'absolute';
-        backButton.style.top = '20px';
-        backButton.style.right = '20px';
-        backButton.style.padding = '8px 15px';
-        backButton.style.backgroundColor = '#74b9ff';
-        backButton.style.color = 'white';
-        backButton.style.borderRadius = '5px';
-        backButton.style.textDecoration = 'none';
-        adminHeader.appendChild(backButton);
-    }
+    // Nút quay về trang chủ đã có sẵn trong admin.html (tránh tạo trùng)
 
     // Update statistics
     document.getElementById('total-products').textContent = products.length;
