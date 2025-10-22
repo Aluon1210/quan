@@ -1166,10 +1166,11 @@ function populateCategoryFilter() {
     const categoryFilter = document.getElementById('category-filter');
     if (!categoryFilter) return;
 
-    categoryFilter.innerHTML = '<option value="">Tất cả danh mục</option>' +
-        categories.slice(1).map(category => 
-            `<option value="${category}">${category}</option>`
-        ).join('');
+    // Điền đầy đủ danh mục, thêm tuỳ chọn "Tất cả"
+    const uniqueCategories = Array.from(new Set(categories)).filter(c => c && c !== 'Tất cả');
+    categoryFilter.innerHTML = ['<option value="">Tất cả</option>']
+        .concat(uniqueCategories.map(category => `<option value="${category}">${category}</option>`))
+        .join('');
 }
 
 function setupFilters() {
